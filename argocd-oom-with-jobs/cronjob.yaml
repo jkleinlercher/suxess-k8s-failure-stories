@@ -13,7 +13,7 @@ spec:
       template:
         spec:
           containers:
-          - image: nginx
+          - image: alpine
             name: kill-argocd-job
             resources: {}
           restartPolicy: OnFailure
