@@ -1,0 +1,20 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  labels:
+    app.kubernetes.io/instance: my-httpd-app
+  name: kill-argocd-job
+  namespace: my-httpd-app
+spec:
+  jobTemplate:
+    metadata:
+      name: kill-argocd-job
+    spec:
+      template:
+        spec:
+          containers:
+          - image: nginx
+            name: kill-argocd-job
+            resources: {}
+          restartPolicy: OnFailure
+  schedule: '*/1 * * * *'
