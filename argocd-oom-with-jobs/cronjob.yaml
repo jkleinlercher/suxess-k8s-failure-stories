@@ -1,10 +1,8 @@
 apiVersion: batch/v1
 kind: CronJob
 metadata:
-  labels:
-    app.kubernetes.io/instance: my-httpd-app
   name: kill-argocd-job
-  namespace: my-httpd-app
+  namespace: argocd-oom-with-jobs
 spec:
   jobTemplate:
     metadata:
