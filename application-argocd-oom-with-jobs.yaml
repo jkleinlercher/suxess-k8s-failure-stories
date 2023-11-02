@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argocd-oom-with-jobs
+  namespace: argocd
+spec:
+  destination:
+    namespace: argocd-oom-with-jobs
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: argocd-oom-with-jobs
+    repoURL: https://github.com/jkleinlercher/suxess-k8s-failure-stories
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
